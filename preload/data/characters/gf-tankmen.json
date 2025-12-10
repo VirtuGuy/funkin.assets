@@ -1,34 +1,42 @@
 {
   "version": "1.0.0",
   "name": "Girlfriend (Tankman Stickup)",
-  "assetPath": "characters/gfTankmen",
+  "renderType": "animateatlas",
+  "assetPath": "shared:characters/gf-tankmen",
   "startingAnimation": "danceLeft",
+  "offsets": [0, -165],
+  "cameraOffsets": [0, -165],
+  "atlasSettings": {
+    "useRenderTexture": true
+  },
   "animations": [
     {
       "name": "danceLeft",
-      "prefix": "GF Dancing at Gunpoint",
-      "frameIndices": [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-      "offsets": [0, -9]
+      "prefix": "Idle",
+      "animType": "symbol",
+      "frameIndices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
     },
     {
       "name": "danceRight",
-      "prefix": "GF Dancing at Gunpoint",
+      "prefix": "Idle",
+      "animType": "symbol",
       "frameIndices": [
         15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29
-      ],
-      "offsets": [0, -9]
+      ]
     },
     {
       "name": "sad",
-      "prefix": "GF Crying at Gunpoint",
+      "prefix": "Crying",
+      "animType": "symbol",
       "frameIndices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-      "offsets": [2, -21]
+      "offsets": [-5, -22]
     },
     {
       "name": "drop70",
-      "prefix": "GF Crying at Gunpoint",
+      "prefix": "Crying",
+      "animType": "symbol",
       "frameIndices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-      "offsets": [2, -21]
+      "offsets": [-5, -22]
     }
   ]
 }
