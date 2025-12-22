@@ -4,8 +4,8 @@
   "renderType": "animateatlas",
   "assetPath": "shared:characters/gf-tankmen",
   "startingAnimation": "danceLeft",
-  "offsets": [0, -165],
-  "cameraOffsets": [0, -165],
+  "offsets": [0, 4],
+  "cameraOffsets": [0, 8],
   "atlasSettings": {
     "useRenderTexture": true
   },
