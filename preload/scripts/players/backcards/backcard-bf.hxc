@@ -19,9 +19,6 @@ class BoyfriendCard extends BackingCard
   public var moreWays2:BGScrollingText;
   public var funnyScroll3:BGScrollingText;
 
-  var glow:FlxSprite;
-  var glowDark:FlxSprite;
-
   public override function applyExitMovers(?exitMovers:FreeplayState.ExitMoverData, ?exitMoversCharSel:FreeplayState.ExitMoverData):Void
   {
     super.applyExitMovers(exitMovers, exitMoversCharSel);
@@ -151,36 +148,7 @@ class BoyfriendCard extends BackingCard
     funnyScroll3.speed = -3.8;
     add(funnyScroll3);
 
-    glowDark = new FlxSprite((FreeplayState.CUTOUT_WIDTH * FreeplayState.DJ_POS_MULTI) + -300, 330).loadGraphic(Paths.image('freeplay/beatglow'));
-    glowDark.blend = 9;
-    add(glowDark);
-
-    glow = new FlxSprite((FreeplayState.CUTOUT_WIDTH * FreeplayState.DJ_POS_MULTI) + -300, 330).loadGraphic(Paths.image('freeplay/beatglow'));
-    glow.blend = 0;
-    add(glow);
-
-    glowDark.visible = false;
-    glow.visible = false;
-
     add(cardGlow);
-  }
-
-  var beatFreq:Int = 1;
-  var beatFreqList:Array<Int> = [1, 2, 4, 8];
-
-  public override function beatHit():Void
-  {
-    // increases the amount of beats that need to go by to pulse the glow because itd flash like craazy at high bpms.....
-    beatFreq = beatFreqList[Math.floor(Conductor.instance.bpm / 140)];
-
-    if (Conductor.instance.currentBeat % beatFreq != 0) return;
-    FlxTween.cancelTweensOf(glow);
-    FlxTween.cancelTweensOf(glowDark);
-
-    glow.alpha = 0.8;
-    FlxTween.tween(glow, {alpha: 0}, 16 / 24, {ease: FlxEase.quartOut});
-    glowDark.alpha = 0;
-    FlxTween.tween(glowDark, {alpha: 0.6}, 18 / 24, {ease: FlxEase.quartOut});
   }
 
   public override function introDone():Void
@@ -192,9 +160,6 @@ class BoyfriendCard extends BackingCard
     funnyScroll2.visible = true;
     moreWays2.visible = true;
     funnyScroll3.visible = true;
-    // grpTxtScrolls.visible = true;
-    glowDark.visible = true;
-    glow.visible = true;
   }
 
   public override function confirm():Void
@@ -208,8 +173,6 @@ class BoyfriendCard extends BackingCard
     funnyScroll2.visible = false;
     moreWays2.visible = false;
     funnyScroll3.visible = false;
-    glowDark.visible = false;
-    glow.visible = false;
   }
 
   public override function disappear():Void
@@ -222,8 +185,6 @@ class BoyfriendCard extends BackingCard
     funnyScroll2.visible = false;
     moreWays2.visible = false;
     funnyScroll3.visible = false;
-    glowDark.visible = false;
-    glow.visible = false;
   }
 
   var prevLevelId:String = '';

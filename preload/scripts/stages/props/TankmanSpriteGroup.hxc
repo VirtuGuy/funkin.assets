@@ -100,8 +100,6 @@ class TankmanSpriteGroup extends FlxTypedSpriteGroup
     {
       tankman.addRimlight();
     }
-
-    this.add(tankman);
   }
 
   function _initTankmanObj():TankmanSprite

@@ -18,8 +18,6 @@ class PicoCard extends BackingCard
   var scrollTop:FlxBackdrop;
   var scrollMiddle:FlxBackdrop;
 
-  var glow:FlxSprite;
-  var glowDark:FlxSprite;
   var blueBar:FlxSprite;
 
   var confirmAtlas:FunkinSprite;
@@ -128,22 +126,11 @@ class PicoCard extends BackingCard
     add(scrollMiddle);
     scrollMiddle.velocity.x = 220;
 
-    glowDark = new FlxSprite((FreeplayState.CUTOUT_WIDTH * FreeplayState.DJ_POS_MULTI)
-      + -300, 330).loadGraphic(Paths.image('freeplay/backingCards/pico/glow'));
-    glowDark.blend = 9;
-    add(glowDark);
-
-    glow = new FlxSprite((FreeplayState.CUTOUT_WIDTH * FreeplayState.DJ_POS_MULTI) + -300, 330).loadGraphic(Paths.image('freeplay/backingCards/pico/glow'));
-    glow.blend = 0;
-    add(glow);
-
     blueBar.visible = false;
     scrollBack.visible = false;
     scrollLower.visible = false;
     scrollTop.visible = false;
     scrollMiddle.visible = false;
-    glow.visible = false;
-    glowDark.visible = false;
 
     confirmAtlas = FunkinSprite.createTextureAtlas((FreeplayState.CUTOUT_WIDTH * FreeplayState.DJ_POS_MULTI) - 120, 55,
       "freeplay/backingCards/pico/pico-confirm");
@@ -235,24 +222,6 @@ class PicoCard extends BackingCard
     });
   }
 
-  var beatFreq:Int = 1;
-  var beatFreqList:Array<Int> = [1, 2, 4, 8];
-
-  public override function beatHit():Void
-  {
-    // increases the amount of beats that need to go by to pulse the glow because itd flash like craazy at high bpms.....
-    beatFreq = beatFreqList[Math.floor(Conductor.instance.bpm / 140)];
-
-    if (Conductor.instance.currentBeat % beatFreq != 0) return;
-    FlxTween.cancelTweensOf(glow);
-    FlxTween.cancelTweensOf(glowDark);
-
-    glow.alpha = 1;
-    FlxTween.tween(glow, {alpha: 0}, 16 / 24, {ease: FlxEase.quartOut});
-    glowDark.alpha = 0;
-    FlxTween.tween(glowDark, {alpha: 1}, 18 / 24, {ease: FlxEase.quartOut});
-  }
-
   public override function introDone():Void
   {
     pinkBack.color = 0xFF98A2F3;
@@ -262,8 +231,6 @@ class PicoCard extends BackingCard
     scrollLower.visible = true;
     scrollTop.visible = true;
     scrollMiddle.visible = true;
-    glowDark.visible = true;
-    glow.visible = true;
 
     cardGlow.visible = true;
     FlxTween.tween(cardGlow, {alpha: 0}, 0.45, {ease: FlxEase.sineOut});
@@ -279,8 +246,6 @@ class PicoCard extends BackingCard
     scrollLower.visible = false;
     scrollTop.visible = false;
     scrollMiddle.visible = false;
-    glowDark.visible = false;
-    glow.visible = false;
 
     cardGlow.visible = true;
     cardGlow.alpha = 1;
